@@ -2,7 +2,7 @@ package gradle.java.domain;
 
 import java.util.ArrayList;
 
-public interface ProductCatalog {
+public interface ProductRepository {
 
   ArrayList<Product> findAll();
 

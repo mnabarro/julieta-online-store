@@ -1,12 +1,12 @@
 
-package gradle.java;
+package gradle.java.infraestructure;
 
 import gradle.java.domain.Product;
-import gradle.java.domain.ProductCatalog;
+import gradle.java.domain.ProductRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ProductWarehouse implements ProductCatalog {
+public class Database implements ProductRepository {
   private final ArrayList<Product> products = new ArrayList<>(Arrays.asList(
     new Product(
       "1",

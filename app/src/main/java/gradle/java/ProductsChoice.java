@@ -1,16 +1,17 @@
 package gradle.java;
 
 import gradle.java.domain.Product;
+import gradle.java.infraestructure.Database;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ProductsToChooseExplore {
+public class ProductsChoice {
 
-  private final ProductWarehouse productWarehouse = new ProductWarehouse();
+  private final Database database = new Database();
 
-  public void productsToChooseExplore() {
+  public void showProductsToChoose() {
       String menuOption;
-      ArrayList<Product> catalogue = productWarehouse.findAll();
+      ArrayList<Product> catalogue = database.findAll();
 
     System.out.println("Which product would you like to explore?");
     for (Product product: catalogue) {
