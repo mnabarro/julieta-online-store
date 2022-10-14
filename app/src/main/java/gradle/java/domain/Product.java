@@ -1,4 +1,4 @@
-package gradle.java;
+package gradle.java.domain;
 
 public class Product {
     private final String image;
@@ -15,26 +15,22 @@ public class Product {
         this.price = price;
         this.reference = reference;
         this.id = id;
-
     }
-    String showId () {
+
+    public String showId () {
         return this.id;
     }
-    String showImage(){
+    public String showImage(){
         return image;
     }
-
-    String showDescription(){
+    public String showDescription(){
         return description;
     }
-
-    String showFeaturedAttribute(){
+    public String showFeaturedAttribute(){
         return featuredAttribute;
     }
-
-    Double showPrice(){
+    public Double showPrice(){
         return price;
     }
-
-    String showReference(){ return reference; }
+    public String showReference(){ return reference; }
 }

@@ -1,16 +1,17 @@
 package gradle.java;
 
+import gradle.java.domain.Product;
 import java.util.ArrayList;
 
 public class OnlineShop {
-    private final CatalogueFormater catalogueFormater = new CatalogueFormater();
+    private final CatalogueFormatter catalogueFormatter = new CatalogueFormatter();
     private final ProductWarehouse productWarehouse = new ProductWarehouse();
 
     public void showProducts() {
 
         ArrayList<Product> catalogue = productWarehouse.findAll();
 
-        String formattedCatalogue = catalogueFormater.format(catalogue);
+        String formattedCatalogue = catalogueFormatter.format(catalogue);
         System.out.println(formattedCatalogue);
     }
 }

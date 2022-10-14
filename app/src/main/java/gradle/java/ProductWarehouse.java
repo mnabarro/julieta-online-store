@@ -1,12 +1,14 @@
 
 package gradle.java;
 
+import gradle.java.domain.Product;
+import gradle.java.domain.ProductCatalog;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ProductWarehouse {
-
-  private final ArrayList<Product> products = new ArrayList<>(Arrays.asList(new Product(
+public class ProductWarehouse implements ProductCatalog {
+  private final ArrayList<Product> products = new ArrayList<>(Arrays.asList(
+    new Product(
       "1",
       "\uD83D\uDCFA",
       "Glamorous panoramic television, 13 inches",
@@ -19,8 +21,10 @@ public class ProductWarehouse {
       "Untuned musical keyboard, 4 octaves",
       "Tired of your noisy neighbourgh? Play this untuned musical keyboard for two hours at home and your neighbour will be ready to move to a building far away from you.",
       1003.00,
-      "X4A")));
+      "X4A"))
+  );
 
+  @Override
   public ArrayList<Product> findAll() {
     return products;
   }

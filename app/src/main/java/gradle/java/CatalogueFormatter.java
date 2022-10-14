@@ -1,10 +1,11 @@
 package gradle.java;
 
+import gradle.java.domain.Product;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class CatalogueFormater {
+public class CatalogueFormatter {
     ProductsToChooseExplore productsToChooseExplore = new ProductsToChooseExplore();
     DecideStepToContinue decideStepToContinue = new DecideStepToContinue();
     ProductWarehouse productWarehouse = new ProductWarehouse();
@@ -31,11 +32,11 @@ public class CatalogueFormater {
         System.out.println(nextOption2);
 
         Scanner myObj = new Scanner(System.in);
-        String opcionChoosed = myObj.nextLine();
+        String chosenOption = myObj.nextLine();
 
-        if(opcionChoosed.equals("1")){
+        if(chosenOption.equals("1")){
             System.out.println();
-        } else if (opcionChoosed.equals("2")) {
+        } else if (chosenOption.equals("2")) {
             ArrayList<Product> catalogue = productWarehouse.findAll();
             String formattedCatalogue = this.format(catalogue);
             System.out.println(formattedCatalogue);
