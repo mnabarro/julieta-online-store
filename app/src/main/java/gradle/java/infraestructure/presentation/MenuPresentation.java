@@ -1,4 +1,4 @@
-package gradle.java;
+package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
@@ -31,5 +31,4 @@ public class MenuPresentation {
       System.out.println(formattedCatalogue);
     } else System.out.println("Sorry, you have to choose one valid option");
   }
-
 }

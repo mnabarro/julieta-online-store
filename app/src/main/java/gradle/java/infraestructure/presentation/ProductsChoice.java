@@ -1,4 +1,4 @@
-package gradle.java;
+package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
 import gradle.java.infraestructure.Database;

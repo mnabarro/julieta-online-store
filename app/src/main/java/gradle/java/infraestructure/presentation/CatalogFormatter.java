@@ -1,14 +1,14 @@
-package gradle.java;
+package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import java.util.ArrayList;
 
 
-public class CatalogueFormatter {
+public class CatalogFormatter {
     ProductsChoice productsChoice = new ProductsChoice();
     private final ProductRepository database;
-    public CatalogueFormatter(ProductRepository database) {
+    public CatalogFormatter(ProductRepository database) {
         this.database = database;
     }
 

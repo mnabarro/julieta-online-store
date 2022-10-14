@@ -1,7 +1,7 @@
 Cual es el dominio?
 - OnlineShop, Producto, Catálogo, Carrito de compra, Pago, Recibo, Envío
 
-¿Donde esta el dominio en el proyecto?
+¿Dónde está el dominio en el proyecto?
 - Clase Product
 - Clase ProductRepository
 

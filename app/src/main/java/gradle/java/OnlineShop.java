@@ -2,6 +2,8 @@ package gradle.java;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
+import gradle.java.infraestructure.presentation.CatalogFormatter;
+import gradle.java.infraestructure.presentation.MenuPresentation;
 import java.util.ArrayList;
 
 public class OnlineShop {
@@ -15,10 +17,10 @@ public class OnlineShop {
 
     public void showProducts() {
 
-        CatalogueFormatter catalogueFormatter = new CatalogueFormatter(database);
+        CatalogFormatter catalogFormatter = new CatalogFormatter(database);
         ArrayList<Product> catalogue = database.findAll();
 
-        String formattedCatalogue = catalogueFormatter.formattedCatalogue(catalogue);
+        String formattedCatalogue = catalogFormatter.formattedCatalogue(catalogue);
         System.out.println(formattedCatalogue);
         menuPresentation.decideWhatToDoNext();
     }
