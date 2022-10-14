@@ -8,7 +8,6 @@ public class CatalogueFormater {
     ProductsToChooseExplore productsToChooseExplore = new ProductsToChooseExplore();
     DecideStepToContinue decideStepToContinue = new DecideStepToContinue();
     ProductWarehouse productWarehouse = new ProductWarehouse();
-    CatalogueFormater catalogueFormater = new CatalogueFormater();
     public String format(ArrayList<Product> catalogue){
         for (Product product : catalogue){
             System.out.println(product.showImage());
@@ -38,7 +37,7 @@ public class CatalogueFormater {
             System.out.println();
         } else if (opcionChoosed.equals("2")) {
             ArrayList<Product> catalogue = productWarehouse.findAll();
-            String formattedCatalogue = catalogueFormater.format(catalogue);
+            String formattedCatalogue = this.format(catalogue);
             System.out.println(formattedCatalogue);
         } else System.out.println("Sorry, you have to choose one valid option");
     }

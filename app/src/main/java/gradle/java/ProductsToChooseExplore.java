@@ -1,25 +1,30 @@
 package gradle.java;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductsToChooseExplore {
-    String DESCRIPTION_TV = "DESCRIPTION: With this panoramic television, your friday nights will be boring no more. The screen is composed of 14 million pixels. Thanks to its low energy consumption design, your bills will stay low.";
-    String DESCRIPTION_PIANO = "DESCRIPTION: Tired of your noisy neighbourgh? Play this untuned musical keyboard for two hours at home and your neighbour will be ready to move to a building far away from you.";
-    public void productsToChooseExplore(){
-        System.out.println("Which product would you like to explore?");
-        String option1 = "1 - \uD83D\uDCFA";
-        String option2 = "2 - \uD83C\uDFB9";
-        System.out.println(option1);
-        System.out.println(option2);
 
-        Scanner myObj = new Scanner(System.in);
-        String object = myObj.nextLine();
+  private final ProductWarehouse productWarehouse = new ProductWarehouse();
 
-        if(object.equals("1")){
-            System.out.println(DESCRIPTION_TV);
-        } else if (object.equals("2")) {
-            System.out.println(DESCRIPTION_PIANO);
-        } else System.out.println("Sorry, the product doesn't exist");
+  public void productsToChooseExplore() {
+    ArrayList<Product> products = productWarehouse.findAll();
 
+    System.out.println("Which product would you like to explore?");
+    String option1 = products.get(0).showId() + " - " + products.get(0).showImage();
+    String option2 = products.get(1).showId() + " - " + products.get(1).showImage();
+    System.out.println(option1);
+    System.out.println(option2);
+
+    Scanner myObj = new Scanner(System.in);
+    String selection = myObj.nextLine();
+
+    if (selection.equals(products.get(0).showId())) {
+      System.out.println("DESCRIPTION :" +products.get(0).showFeaturedAttribute());
+    } else if (selection.equals(products.get(1).showId())) {
+        System.out.println("DESCRIPTION :" + products.get(1).showFeaturedAttribute());
+    } else {
+        System.out.println("Sorry, the product doesn't exist");
     }
+  }
 }
