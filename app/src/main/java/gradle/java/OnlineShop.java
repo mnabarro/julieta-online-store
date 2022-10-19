@@ -3,6 +3,8 @@ package gradle.java;
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
+import gradle.java.infraestructure.presentation.MenuStrings;
+import java.awt.Menu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,12 +24,16 @@ public class OnlineShop {
     }
 
     public void decideWhatToDoNext(){
-        System.out.println("\n");
-        System.out.println("¿What would you like to do next?");
-        String nextOption1 = "1 - Add product to cart";
-        String nextOption2 = "2 - Keep browsing products";
-        System.out.println(nextOption1);
-        System.out.println(nextOption2);
+        StringBuilder textMenu = new StringBuilder();
+
+        textMenu.append("\n");
+        textMenu.append(MenuStrings.WHATTODONEXT).append("\n");
+        textMenu.append(MenuStrings.OPTION1);
+        textMenu.append(MenuStrings.ADDPRODUCTTOCART).append("\n");
+        textMenu.append(MenuStrings.OPTION2);
+        textMenu.append(MenuStrings.KEEPBROWSING).append("\n");
+        textMenu.append("\n");
+        System.out.println(textMenu);
 
         Scanner myObj = new Scanner(System.in);
         String chosenOption = myObj.nextLine();
@@ -38,28 +44,25 @@ public class OnlineShop {
 
             showProducts();
 
-        } else System.out.println("Sorry, you have to choose one valid option");
+        } else System.out.println(MenuStrings.CHOOSEVALIDOPTION);
     }
 
     public void showProductsToChoose() {
         String menuOption;
         ArrayList<Product> catalogue = database.findAll();
 
-        System.out.println("Which product would you like to explore?");
-        for (Product product: catalogue) {
-            menuOption = product.reference + " - " + product.image;
-            System.out.println(menuOption);
-        }
+        System.out.println(MenuStrings.WICHPRODUCT);
 
         Scanner myObj = new Scanner(System.in);
         String selection = myObj.nextLine();
+
 
         if (selection.equals(catalogue.get(0).reference)) {
             System.out.println("DESCRIPTION :" +catalogue.get(0).higlightedAttribute);
         } else if (selection.equals(catalogue.get(1).reference)) {
             System.out.println("DESCRIPTION :" + catalogue.get(1).higlightedAttribute);
         } else {
-            System.out.println("Sorry, the product doesn't exist");
+            System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
         }
     }
 }
