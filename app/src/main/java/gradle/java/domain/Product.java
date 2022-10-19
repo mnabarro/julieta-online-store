@@ -1,12 +1,12 @@
 package gradle.java.domain;
 
 public class Product {
-    private final String id;
-    private final String image;
-    private final String description;
-    private final String featuredAttribute;
-    private final double price;
-    private final String reference;
+    public final String id;
+    public final String image;
+    public final String description;
+    public final String featuredAttribute;
+    public final double price;
+    public final String reference;
 
     public Product(String id, String image, String description, String featuredAttribute, Double price, String reference){
         this.id = id;
@@ -16,21 +16,4 @@ public class Product {
         this.price = price;
         this.reference = reference;
     }
-
-    public String showId () {
-        return this.id;
-    }
-    public String showImage(){
-        return image;
-    }
-    public String showDescription(){
-        return description;
-    }
-    public String showFeaturedAttribute(){
-        return featuredAttribute;
-    }
-    public Double showPrice(){
-        return price;
-    }
-    public String showReference(){ return reference; }
 }
