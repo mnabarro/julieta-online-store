@@ -4,15 +4,15 @@ import gradle.java.domain.Product;
 import java.util.ArrayList;
 
 public class CatalogDataFormatter {
+    private final ProductDataFormatter productDataFormatter = new ProductDataFormatter();
     public String formattedCatalog(ArrayList<Product> catalog){
+        StringBuilder result = new StringBuilder();
+
         for (Product product : catalog){
-            System.out.println(product.image);
-            System.out.println(product.description);
-            System.out.println(product.featuredAttribute);
-            System.out.println(product.price);
-            System.out.println(product.reference);
-            System.out.println("\n");
+            result.append(productDataFormatter.productInfo(product));
+            result.append("\n");
         }
-        return "";
+
+        return result.toString();
     }
 }
