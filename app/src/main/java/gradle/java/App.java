@@ -16,5 +16,6 @@ public class App {
         OnlineShop onlineShop = new OnlineShop(database, catalogFormatter);
 
         onlineShop.showProducts();
+        onlineShop.selectProductToExplore();
     }
 }

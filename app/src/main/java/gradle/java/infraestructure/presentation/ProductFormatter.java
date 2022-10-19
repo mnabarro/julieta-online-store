@@ -21,12 +21,13 @@ public class ProductFormatter {
     StringBuilder result = new StringBuilder();
 
     result.append(product.image).append("\n");
-    result.append("Reference: ").append(product.reference);
+    result.append("Reference: ").append(product.reference).append("\n");
     result.append("Price: ").append(product.price).append(" €\n");
-    result.append("Summary ").append("\n");
-
+    result.append("Summary:").append("\n");
     result.append(product.description).append(", ");
-    result.append(product.higlightedAttribute).append("\n");
+    result.append(product.higlightedAttribute).append("\n\n");
+    result.append("Description:").append("\n");
+    result.append(product.longDescription).append("\n");
     result.append("\n");
 
     return result.toString();

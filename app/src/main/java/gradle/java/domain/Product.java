@@ -3,7 +3,6 @@ package gradle.java.domain;
 public class Product {
     public final String image;
     public final String description;
-
     public final String higlightedAttribute;
     public final String longDescription;
     public final double price;

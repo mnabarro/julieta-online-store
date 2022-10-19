@@ -4,8 +4,8 @@ import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuStrings;
-import java.awt.Menu;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class OnlineShop {
@@ -47,22 +47,31 @@ public class OnlineShop {
         } else System.out.println(MenuStrings.CHOOSEVALIDOPTION);
     }
 
-    public void showProductsToChoose() {
-        String menuOption;
+    public void selectProductToExplore() {
+
         ArrayList<Product> catalogue = database.findAll();
 
         System.out.println(MenuStrings.WICHPRODUCT);
 
         Scanner myObj = new Scanner(System.in);
-        String selection = myObj.nextLine();
+        String selection = "";
+        Boolean productFound = false;
 
-
-        if (selection.equals(catalogue.get(0).reference)) {
-            System.out.println("DESCRIPTION :" +catalogue.get(0).higlightedAttribute);
-        } else if (selection.equals(catalogue.get(1).reference)) {
-            System.out.println("DESCRIPTION :" + catalogue.get(1).higlightedAttribute);
-        } else {
+        while(!productFound) {
+            selection = myObj.nextLine();
+            if( selection.equals("ABC")) {
+                productFound = true;
+            }
             System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
         }
+        System.out.println("CHAU!");
+
+//        if (selection.equals(catalogue.get(0).reference)) {
+//            System.out.println("DESCRIPTION :" +catalogue.get(0).higlightedAttribute);
+//        } else if (selection.equals(catalogue.get(1).reference)) {
+//            System.out.println("DESCRIPTION :" + catalogue.get(1).higlightedAttribute);
+//        } else {
+//            System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
+//        }
     }
 }
