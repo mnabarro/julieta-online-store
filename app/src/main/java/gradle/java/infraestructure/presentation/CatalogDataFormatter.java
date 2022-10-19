@@ -9,7 +9,7 @@ public class CatalogDataFormatter {
         StringBuilder result = new StringBuilder();
 
         for (Product product : catalog){
-            result.append(productDataFormatter.productInfo(product));
+            result.append(productDataFormatter.formattedProduct(product));
             result.append("\n");
         }
 

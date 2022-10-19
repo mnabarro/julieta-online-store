@@ -4,7 +4,7 @@ import gradle.java.domain.Product;
 
 public class ProductDataFormatter {
 
-  public String productInfo (Product product) {
+  public String formattedProduct(Product product) {
 
     StringBuilder result = new StringBuilder();
 
