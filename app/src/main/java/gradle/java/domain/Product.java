@@ -1,20 +1,20 @@
 package gradle.java.domain;
 
 public class Product {
+    private final String id;
     private final String image;
     private final String description;
     private final String featuredAttribute;
     private final double price;
     private final String reference;
-    private final String id;
 
     public Product(String id, String image, String description, String featuredAttribute, Double price, String reference){
+        this.id = id;
         this.image = image;
-        this. description = description;
+        this.description = description;
         this.featuredAttribute = featuredAttribute;
         this.price = price;
         this.reference = reference;
-        this.id = id;
     }
 
     public String showId () {

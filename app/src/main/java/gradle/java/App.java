@@ -4,13 +4,16 @@
 package gradle.java;
 
 import gradle.java.domain.ProductRepository;
-import gradle.java.infraestructure.Database;
+import gradle.java.infraestructure.dataaccess.Database;
+import gradle.java.infraestructure.presentation.CatalogFormatter;
 
 public class App {
     public static void main(String[] args) {
 
         ProductRepository database = new Database();
-        OnlineShop onlineShop = new OnlineShop(database);
+        CatalogFormatter catalogFormatter = new CatalogFormatter();
+
+        OnlineShop onlineShop = new OnlineShop(database, catalogFormatter);
         onlineShop.showProducts();
     }
 }

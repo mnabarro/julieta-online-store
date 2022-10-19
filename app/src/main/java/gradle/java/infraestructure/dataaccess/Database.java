@@ -1,5 +1,4 @@
-
-package gradle.java.infraestructure;
+package gradle.java.infraestructure.dataaccess;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
@@ -7,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Database implements ProductRepository {
-  private final ArrayList<Product> products = new ArrayList<>(Arrays.asList(
+  private final ArrayList<Product> productList = new ArrayList<>(Arrays.asList(
     new Product(
       "1",
       "\uD83D\uDCFA",
@@ -26,7 +25,7 @@ public class Database implements ProductRepository {
 
   @Override
   public ArrayList<Product> findAll() {
-    return products;
+    return productList;
   }
 
 }

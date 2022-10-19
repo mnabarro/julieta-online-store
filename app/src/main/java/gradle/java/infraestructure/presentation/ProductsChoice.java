@@ -1,7 +1,7 @@
 package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
-import gradle.java.infraestructure.Database;
+import gradle.java.infraestructure.dataaccess.Database;
 import java.util.ArrayList;
 import java.util.Scanner;
 
