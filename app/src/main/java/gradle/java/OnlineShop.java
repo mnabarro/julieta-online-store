@@ -4,8 +4,8 @@ import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuStrings;
+import java.awt.Menu;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class OnlineShop {
@@ -14,6 +14,22 @@ public class OnlineShop {
     public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter) {
         this.database = database;
         this.catalogFormatter = catalogFormatter;
+    }
+
+    public void showCliShop () {
+        Boolean quit = false;
+        Boolean productFound = false;
+
+//        while (!quit) {
+//
+//            showProducts();
+//             if ( selectProductToExplore ) {
+//                showProductDetail (selectProductToexplore);
+//                if (whatToDoNext == addProducToCart){
+//                    quit = true;
+//                    }
+//                }
+//             }
     }
 
     public void showProducts() {
@@ -38,13 +54,13 @@ public class OnlineShop {
         Scanner myObj = new Scanner(System.in);
         String chosenOption = myObj.nextLine();
 
-        if(chosenOption.equals("1")){
-            System.out.println();
-        } else if (chosenOption.equals("2")) {
-
-            showProducts();
-
-        } else System.out.println(MenuStrings.CHOOSEVALIDOPTION);
+        if(chosenOption.equals(MenuStrings.OPTION1.substring(1,2))){
+            System.out.println("addto");
+        } else if (chosenOption.equals(MenuStrings.OPTION2.substring(1,2))) {
+            System.out.println("keep");;
+        }
+        else
+            System.out.println(MenuStrings.CHOOSEVALIDOPTION);
     }
 
     public void selectProductToExplore() {
@@ -55,7 +71,6 @@ public class OnlineShop {
 
         Scanner myObj = new Scanner(System.in);
         String selection = "";
-        Boolean productFound = false;
 
         while(!productFound) {
             selection = myObj.nextLine();
@@ -65,13 +80,5 @@ public class OnlineShop {
             System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
         }
         System.out.println("CHAU!");
-
-//        if (selection.equals(catalogue.get(0).reference)) {
-//            System.out.println("DESCRIPTION :" +catalogue.get(0).higlightedAttribute);
-//        } else if (selection.equals(catalogue.get(1).reference)) {
-//            System.out.println("DESCRIPTION :" + catalogue.get(1).higlightedAttribute);
-//        } else {
-//            System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
-//        }
     }
 }
