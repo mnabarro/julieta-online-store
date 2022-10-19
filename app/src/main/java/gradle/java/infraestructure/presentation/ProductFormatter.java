@@ -1,7 +1,6 @@
 package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
-
 public class ProductFormatter {
 
   public String formattedProduct(Product product) {
@@ -9,8 +8,8 @@ public class ProductFormatter {
     StringBuilder result = new StringBuilder();
 
     result.append(product.image).append("\n");
-    result.append(product.description).append("\n");
-    result.append(product.featuredAttribute).append("\n");
+    result.append(product.description).append(", ");
+    result.append(product.higlightedAttribute).append("\n");
     result.append("Price: ").append(product.price).append(" €\n");
     result.append("Reference: ").append(product.reference);
     result.append("\n");
@@ -24,9 +23,10 @@ public class ProductFormatter {
     result.append(product.image).append("\n");
     result.append("Reference: ").append(product.reference);
     result.append("Price: ").append(product.price).append(" €\n");
+    result.append("Summary ").append("\n");
 
-    result.append(product.description).append("\n");
-    result.append(product.featuredAttribute).append("\n");
+    result.append(product.description).append(", ");
+    result.append(product.higlightedAttribute).append("\n");
     result.append("\n");
 
     return result.toString();

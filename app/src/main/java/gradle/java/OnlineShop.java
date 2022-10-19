@@ -54,10 +54,10 @@ public class OnlineShop {
         Scanner myObj = new Scanner(System.in);
         String selection = myObj.nextLine();
 
-        if (selection.equals(catalogue.get(0).id)) {
-            System.out.println("DESCRIPTION :" +catalogue.get(0).featuredAttribute);
-        } else if (selection.equals(catalogue.get(1).id)) {
-            System.out.println("DESCRIPTION :" + catalogue.get(1).featuredAttribute);
+        if (selection.equals(catalogue.get(0).reference)) {
+            System.out.println("DESCRIPTION :" +catalogue.get(0).higlightedAttribute);
+        } else if (selection.equals(catalogue.get(1).reference)) {
+            System.out.println("DESCRIPTION :" + catalogue.get(1).higlightedAttribute);
         } else {
             System.out.println("Sorry, the product doesn't exist");
         }
