@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class CatalogDataFormatter {
     private final ProductDataFormatter productDataFormatter = new ProductDataFormatter();
     public String formattedCatalog(ArrayList<Product> catalog){
+
         StringBuilder result = new StringBuilder();
 
         for (Product product : catalog){

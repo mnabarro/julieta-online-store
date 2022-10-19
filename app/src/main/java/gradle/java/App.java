@@ -14,6 +14,7 @@ public class App {
         CatalogDataFormatter catalogFormatter = new CatalogDataFormatter();
 
         OnlineShop onlineShop = new OnlineShop(database, catalogFormatter);
+
         onlineShop.showProducts();
     }
 }

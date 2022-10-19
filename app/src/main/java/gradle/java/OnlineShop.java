@@ -19,9 +19,8 @@ public class OnlineShop {
         ArrayList<Product> catalog = database.findAll();
         String formattedCatalog = catalogFormatter.formattedCatalog(catalog);
         System.out.println(formattedCatalog);
-
-        decideWhatToDoNext();
     }
+
     public void decideWhatToDoNext(){
         System.out.println("\n");
         System.out.println("¿What would you like to do next?");
@@ -48,7 +47,7 @@ public class OnlineShop {
 
         System.out.println("Which product would you like to explore?");
         for (Product product: catalogue) {
-            menuOption = product.id + " - " + product.image;
+            menuOption = product.reference + " - " + product.image;
             System.out.println(menuOption);
         }
 
