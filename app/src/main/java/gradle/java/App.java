@@ -5,13 +5,13 @@ package gradle.java;
 
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.dataaccess.Database;
-import gradle.java.infraestructure.presentation.CatalogDataFormatter;
+import gradle.java.infraestructure.presentation.CatalogFormatter;
 
 public class App {
     public static void main(String[] args) {
 
         ProductRepository database = new Database();
-        CatalogDataFormatter catalogFormatter = new CatalogDataFormatter();
+        CatalogFormatter catalogFormatter = new CatalogFormatter();
 
         OnlineShop onlineShop = new OnlineShop(database, catalogFormatter);
 

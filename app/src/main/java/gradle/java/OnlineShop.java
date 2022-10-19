@@ -2,14 +2,14 @@ package gradle.java;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
-import gradle.java.infraestructure.presentation.CatalogDataFormatter;
+import gradle.java.infraestructure.presentation.CatalogFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OnlineShop {
     private final ProductRepository database;
-    private final CatalogDataFormatter catalogFormatter;
-    public OnlineShop(ProductRepository database, CatalogDataFormatter catalogFormatter) {
+    private final CatalogFormatter catalogFormatter;
+    public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter) {
         this.database = database;
         this.catalogFormatter = catalogFormatter;
     }
