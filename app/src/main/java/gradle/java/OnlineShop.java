@@ -4,7 +4,6 @@ import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuStrings;
-import java.awt.Menu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,10 +16,10 @@ public class OnlineShop {
     }
 
     public void showCliShop () {
-        Boolean quit = false;
-        Boolean productFound = false;
-
-//        while (!quit) {
+//        Boolean quit = false;
+//        Boolean productFound = false;
+//
+//          while (!quit) {
 //
 //            showProducts();
 //             if ( selectProductToExplore ) {
@@ -65,20 +64,20 @@ public class OnlineShop {
 
     public void selectProductToExplore() {
 
-        ArrayList<Product> catalogue = database.findAll();
+        ArrayList<Product> catalog = database.findAll();
 
         System.out.println(MenuStrings.WICHPRODUCT);
 
         Scanner myObj = new Scanner(System.in);
         String selection = "";
 
-        while(!productFound) {
-            selection = myObj.nextLine();
-            if( selection.equals("ABC")) {
-                productFound = true;
-            }
-            System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
-        }
-        System.out.println("CHAU!");
+//        while(!productFound) {
+//            selection = myObj.nextLine();
+//            if( selection.equals("ABC")) {
+//                productFound = true;
+//            }
+//            System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
+//        }
+//        System.out.println("CHAU!");
     }
 }

@@ -4,6 +4,8 @@ import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
 
 public class Database implements ProductRepository {
   private final ArrayList<Product> productList = new ArrayList<>(Arrays.asList(
@@ -29,5 +31,12 @@ public class Database implements ProductRepository {
   public ArrayList<Product> findAll() {
     return productList;
   }
-
+  public Optional<Product> findByReference(String reference) {
+    for (Product product: productList) {
+      if (Objects.equals(product.reference, reference)) {
+        return Optional.of(product);
+      }
+    }
+    return Optional.empty();
+  }
 }
