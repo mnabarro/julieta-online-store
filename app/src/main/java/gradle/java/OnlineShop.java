@@ -7,80 +7,91 @@ import gradle.java.infraestructure.presentation.MenuOptions;
 import gradle.java.infraestructure.presentation.MenuStrings;
 import gradle.java.infraestructure.presentation.ProductFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class OnlineShop {
-    private final ProductRepository database;
-    private final CatalogFormatter catalogFormatter;
-    private final ProductFormatter productFormatter;
+  private final ProductRepository database;
+  private final CatalogFormatter catalogFormatter;
+  private final ProductFormatter productFormatter;
 
-    public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter) {
-        this.database = database;
-        this.catalogFormatter = catalogFormatter;
-        this.productFormatter = productFormatter;
-    }
+  public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter) {
+    this.database = database;
+    this.catalogFormatter = catalogFormatter;
+    this.productFormatter = productFormatter;
+  }
 
-    public void cliOnlineShop() {
-        Optional<Product> productILookFor = Optional.empty();
+  public void cliOnlineShop() {
+    Optional<Product> productILookFor;
 
-        while(productILookFor.isEmpty()) {
+    while (true) {
 
-            showProducts();
+      showProducts();
 
-            productILookFor = selectProductToViewDetails();
+      productILookFor = selectProductToViewDetails();
 
-            if (productILookFor.isPresent()) {
-                cliOutput(productFormatter.formattedProductDetail(productILookFor.get()));
+      if (productILookFor.isPresent()) {
+        consoleOut(productFormatter.formattedProductDetail(productILookFor.get()));
 
-                if ( decideWhatToDoNext() == MenuOptions.addToCart) {
-                    cliOutput("Add to cart action");
-                } else if ( decideWhatToDoNext() == MenuOptions.keepBrowsing) {
-                    cliOutput("Keep browsing");
-                } else {
-                    cliOutput(MenuStrings.chooseValidOption);
-                }
+        String userChoice = addToCartOrKeepBrowsing();
 
-            } else {
-                cliOutput(MenuStrings.productDoesntExists);
-                cliOutput("\n");
-            }
+        if (Objects.equals(userChoice, MenuOptions.addToCart)) {
+          System.exit(0);
+
+        } else if (Objects.equals(userChoice, MenuOptions.keepBrowsing)) {
+          consoleOut("Keep browsing");
+        } else {
+          consoleOut(MenuStrings.chooseValidOption);
         }
+      } else {
+        consoleOut(MenuStrings.productDoesntExists);
+        consoleOut("\n");
+        waitForUserToPressEnter();
+      }
     }
+  }
 
-    private void cliOutput(String text) {
-        System.out.println(text);
-    }
-    public void showProducts() {
+  private void waitForUserToPressEnter() {
+    consoleOut(MenuStrings.pressEnterToContinue);
+    Scanner userInput = new Scanner(System.in);
+    userInput.nextLine();
+  }
 
-        ArrayList<Product> catalog = database.findAll();
-        String formattedCatalog = catalogFormatter.formattedCatalog(catalog);
-        cliOutput(formattedCatalog);
-    }
+  private void consoleOut(String text) {
+    System.out.println(text);
+  }
 
-    public Optional<Product> selectProductToViewDetails() {
+  public void showProducts() {
 
-        cliOutput(MenuStrings.wichProduct);
+    ArrayList<Product> catalog = database.findAll();
+    String formattedCatalog = catalogFormatter.formattedCatalog(catalog);
+    consoleOut(formattedCatalog);
+  }
 
-        Scanner userInput = new Scanner(System.in);
-        String referenceToLookFor = userInput.nextLine();
+  public Optional<Product> selectProductToViewDetails() {
 
-        return database.findByReference(referenceToLookFor);
-    }
+    consoleOut(MenuStrings.wichProduct);
 
-    public String decideWhatToDoNext(){
-        StringBuilder textMenu = new StringBuilder();
+    Scanner userInput = new Scanner(System.in);
+    String referenceToLookFor = userInput.nextLine();
 
-        textMenu.append("\n");
-        textMenu.append(MenuStrings.whatToDoNext).append("\n");
-        textMenu.append(MenuStrings.optionNumberOneWithDash).append(MenuStrings.addProductToCart).append("\n");
-        textMenu.append(MenuStrings.optionNumberTwoWithDash).append(MenuStrings.keepBrowsing).append("\n");
-        textMenu.append("\n");
-        cliOutput(textMenu.toString());
+    return database.findByReference(referenceToLookFor);
+  }
 
-        Scanner userInput = new Scanner(System.in);
+  public String addToCartOrKeepBrowsing() {
+    StringBuilder textMenu = new StringBuilder();
 
-        return userInput.nextLine();
+    textMenu.append("\n");
+    textMenu.append(MenuStrings.whatToDoNext).append("\n");
+    textMenu.append(MenuStrings.optionNumberOneWithDash).append(MenuStrings.addProductToCart).append("\n");
+    textMenu.append(MenuStrings.optionNumberTwoWithDash).append(MenuStrings.keepBrowsing).append("\n");
+    textMenu.append("\n");
+    consoleOut(textMenu.toString());
 
-    }
+    Scanner userInput = new Scanner(System.in);
+    String userSelection = userInput.nextLine();
+    return userSelection;
+
+  }
 }

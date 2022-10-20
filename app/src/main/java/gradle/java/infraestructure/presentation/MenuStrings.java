@@ -9,4 +9,5 @@ public class MenuStrings {
   public final static String optionNumberTwoWithDash = "2 - ";
   public final static String chooseValidOption = "Sorry, you have to choose one valid option";
   public final static String productDoesntExists = "Sorry, the product doesn't exist";
+  public static final String pressEnterToContinue = "Press <ENTER> to continue.";
 }
