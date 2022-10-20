@@ -4,31 +4,38 @@ import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuStrings;
+import gradle.java.infraestructure.presentation.ProductFormatter;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class OnlineShop {
     private final ProductRepository database;
     private final CatalogFormatter catalogFormatter;
-    public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter) {
+    private final ProductFormatter productFormatter;
+
+    public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter) {
         this.database = database;
         this.catalogFormatter = catalogFormatter;
+        this.productFormatter = productFormatter;
     }
 
     public void showCliShop () {
-//        Boolean quit = false;
-//        Boolean productFound = false;
-//
-//          while (!quit) {
-//
-//            showProducts();
-//             if ( selectProductToExplore ) {
-//                showProductDetail (selectProductToexplore);
-//                if (whatToDoNext == addProducToCart){
-//                    quit = true;
-//                    }
-//                }
-//             }
+        Optional<Product> productILookFor = Optional.empty();
+
+        showProducts();
+
+        while(productILookFor.isEmpty()) {
+
+            productILookFor = selectProductToViewDetails();
+
+            if (productILookFor.isPresent()) {
+                System.out.println(productFormatter.formattedProductDetail(productILookFor.get()));
+            } else {
+                System.out.println(MenuStrings.productDoesntExists);
+                System.out.println("\n");
+            }
+        }
     }
 
     public void showProducts() {
@@ -42,42 +49,34 @@ public class OnlineShop {
         StringBuilder textMenu = new StringBuilder();
 
         textMenu.append("\n");
-        textMenu.append(MenuStrings.WHATTODONEXT).append("\n");
-        textMenu.append(MenuStrings.OPTION1);
-        textMenu.append(MenuStrings.ADDPRODUCTTOCART).append("\n");
-        textMenu.append(MenuStrings.OPTION2);
-        textMenu.append(MenuStrings.KEEPBROWSING).append("\n");
+        textMenu.append(MenuStrings.whatToDoNext).append("\n");
+        textMenu.append(MenuStrings.option1);
+        textMenu.append(MenuStrings.addProductToCart).append("\n");
+        textMenu.append(MenuStrings.option2);
+        textMenu.append(MenuStrings.keepBrowsing).append("\n");
         textMenu.append("\n");
         System.out.println(textMenu);
 
         Scanner myObj = new Scanner(System.in);
         String chosenOption = myObj.nextLine();
 
-        if(chosenOption.equals(MenuStrings.OPTION1.substring(1,2))){
+        if(chosenOption.equals(MenuStrings.option1.substring(1,2))){
             System.out.println("addto");
-        } else if (chosenOption.equals(MenuStrings.OPTION2.substring(1,2))) {
+        } else if (chosenOption.equals(MenuStrings.option2.substring(1,2))) {
             System.out.println("keep");;
         }
         else
-            System.out.println(MenuStrings.CHOOSEVALIDOPTION);
+            System.out.println(MenuStrings.chooseValidOption);
     }
 
-    public void selectProductToExplore() {
+    public Optional<Product> selectProductToViewDetails() {
 
-        ArrayList<Product> catalog = database.findAll();
+        System.out.println(MenuStrings.wichProduct);
 
-        System.out.println(MenuStrings.WICHPRODUCT);
+        Scanner userInput = new Scanner(System.in);
+        String referenceToLookFor = userInput.nextLine();
 
-        Scanner myObj = new Scanner(System.in);
-        String selection = "";
+        return database.findByReference(referenceToLookFor);
 
-//        while(!productFound) {
-//            selection = myObj.nextLine();
-//            if( selection.equals("ABC")) {
-//                productFound = true;
-//            }
-//            System.out.println(MenuStrings.PRODUCTDOESNTEXISTS);
-//        }
-//        System.out.println("CHAU!");
     }
 }
