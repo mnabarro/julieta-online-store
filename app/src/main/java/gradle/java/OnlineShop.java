@@ -43,10 +43,11 @@ public class OnlineShop {
           consoleOut("Keep browsing");
         } else {
           consoleOut(MenuStrings.chooseValidOption);
+          waitForUserToPressEnter();
         }
+
       } else {
         consoleOut(MenuStrings.productDoesntExists);
-        consoleOut("\n");
         waitForUserToPressEnter();
       }
     }
