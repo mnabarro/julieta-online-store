@@ -16,13 +16,14 @@ public class ProductFormatter {
 
     return result.toString();
   }
-  public String formattedProductDetail(Product product) {
+  public String formattedProductDetail(Product product, Integer unitsLeft) {
 
     StringBuilder result = new StringBuilder();
 
     result.append(product.image).append("\n");
     result.append("Reference: ").append(product.reference).append("\n");
     result.append("Price: ").append(product.price).append(" €\n");
+    result.append(unitsLeft.toString()).append(" left").append("\n");
     result.append("SUMMARY:").append("\n");
     result.append(product.description).append(", ");
     result.append(product.higlightedAttribute).append("\n\n");

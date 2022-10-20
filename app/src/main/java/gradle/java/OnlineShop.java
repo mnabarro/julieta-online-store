@@ -2,6 +2,7 @@ package gradle.java;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
+import gradle.java.infraestructure.dataaccess.ProductWarehouse;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuOptions;
 import gradle.java.infraestructure.presentation.MenuStrings;
@@ -16,10 +17,13 @@ public class OnlineShop {
   private final CatalogFormatter catalogFormatter;
   private final ProductFormatter productFormatter;
 
-  public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter) {
+  private final ProductWarehouse productWarehouse;
+  public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter,
+    ProductWarehouse productWarehouse) {
     this.database = database;
     this.catalogFormatter = catalogFormatter;
     this.productFormatter = productFormatter;
+    this.productWarehouse = productWarehouse;
   }
 
   public void cliOnlineShop() {
@@ -32,7 +36,7 @@ public class OnlineShop {
       productILookFor = selectProductToViewDetails();
 
       if (productILookFor.isPresent()) {
-        consoleOut(productFormatter.formattedProductDetail(productILookFor.get()));
+        consoleOut(productFormatter.formattedProductDetail(productILookFor.get(), productWarehouse.getStockByReference(productILookFor.get().reference)));
 
         String userChoice = addToCartOrKeepBrowsing();
 

@@ -5,6 +5,7 @@ package gradle.java;
 
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.dataaccess.Database;
+import gradle.java.infraestructure.dataaccess.ProductWarehouse;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.ProductFormatter;
 
@@ -14,8 +15,9 @@ public class App {
         ProductRepository database = new Database();
         CatalogFormatter catalogFormatter = new CatalogFormatter();
         ProductFormatter productFormatter = new ProductFormatter();
+        ProductWarehouse productWarehouse = new ProductWarehouse();
 
-        OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter);
+        OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse);
 
         onlineShop.cliOnlineShop();
 
