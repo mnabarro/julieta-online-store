@@ -36,7 +36,9 @@ public class OnlineShop {
       productILookFor = selectProductToViewDetails();
 
       if (productILookFor.isPresent()) {
-        consoleOut(productFormatter.formattedProductDetail(productILookFor.get(), productWarehouse.getStockByReference(productILookFor.get().reference)));
+        Integer itemStock = productWarehouse.getStockByReference(productILookFor.get().reference);
+
+        consoleOut(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
 
         String userChoice = addToCartOrKeepBrowsing();
 
