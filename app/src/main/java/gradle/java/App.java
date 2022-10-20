@@ -17,7 +17,7 @@ public class App {
 
         OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter);
 
-        onlineShop.showCliShop();
+        onlineShop.cliOnlineShop();
 
     }
 }

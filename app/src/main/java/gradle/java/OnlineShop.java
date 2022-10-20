@@ -3,6 +3,7 @@ package gradle.java;
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
+import gradle.java.infraestructure.presentation.MenuOptions;
 import gradle.java.infraestructure.presentation.MenuStrings;
 import gradle.java.infraestructure.presentation.ProductFormatter;
 import java.util.ArrayList;
@@ -20,63 +21,66 @@ public class OnlineShop {
         this.productFormatter = productFormatter;
     }
 
-    public void showCliShop () {
+    public void cliOnlineShop() {
         Optional<Product> productILookFor = Optional.empty();
 
-        showProducts();
-
         while(productILookFor.isEmpty()) {
+
+            showProducts();
 
             productILookFor = selectProductToViewDetails();
 
             if (productILookFor.isPresent()) {
-                System.out.println(productFormatter.formattedProductDetail(productILookFor.get()));
+                cliOutput(productFormatter.formattedProductDetail(productILookFor.get()));
+
+                if ( decideWhatToDoNext() == MenuOptions.addToCart) {
+                    cliOutput("Add to cart action");
+                } else if ( decideWhatToDoNext() == MenuOptions.keepBrowsing) {
+                    cliOutput("Keep browsing");
+                } else {
+                    cliOutput(MenuStrings.chooseValidOption);
+                }
+
             } else {
-                System.out.println(MenuStrings.productDoesntExists);
-                System.out.println("\n");
+                cliOutput(MenuStrings.productDoesntExists);
+                cliOutput("\n");
             }
         }
     }
 
+    private void cliOutput(String text) {
+        System.out.println(text);
+    }
     public void showProducts() {
 
         ArrayList<Product> catalog = database.findAll();
         String formattedCatalog = catalogFormatter.formattedCatalog(catalog);
-        System.out.println(formattedCatalog);
-    }
-
-    public void decideWhatToDoNext(){
-        StringBuilder textMenu = new StringBuilder();
-
-        textMenu.append("\n");
-        textMenu.append(MenuStrings.whatToDoNext).append("\n");
-        textMenu.append(MenuStrings.option1);
-        textMenu.append(MenuStrings.addProductToCart).append("\n");
-        textMenu.append(MenuStrings.option2);
-        textMenu.append(MenuStrings.keepBrowsing).append("\n");
-        textMenu.append("\n");
-        System.out.println(textMenu);
-
-        Scanner myObj = new Scanner(System.in);
-        String chosenOption = myObj.nextLine();
-
-        if(chosenOption.equals(MenuStrings.option1.substring(1,2))){
-            System.out.println("addto");
-        } else if (chosenOption.equals(MenuStrings.option2.substring(1,2))) {
-            System.out.println("keep");;
-        }
-        else
-            System.out.println(MenuStrings.chooseValidOption);
+        cliOutput(formattedCatalog);
     }
 
     public Optional<Product> selectProductToViewDetails() {
 
-        System.out.println(MenuStrings.wichProduct);
+        cliOutput(MenuStrings.wichProduct);
 
         Scanner userInput = new Scanner(System.in);
         String referenceToLookFor = userInput.nextLine();
 
         return database.findByReference(referenceToLookFor);
+    }
+
+    public String decideWhatToDoNext(){
+        StringBuilder textMenu = new StringBuilder();
+
+        textMenu.append("\n");
+        textMenu.append(MenuStrings.whatToDoNext).append("\n");
+        textMenu.append(MenuStrings.optionNumberOneWithDash).append(MenuStrings.addProductToCart).append("\n");
+        textMenu.append(MenuStrings.optionNumberTwoWithDash).append(MenuStrings.keepBrowsing).append("\n");
+        textMenu.append("\n");
+        cliOutput(textMenu.toString());
+
+        Scanner userInput = new Scanner(System.in);
+
+        return userInput.nextLine();
 
     }
 }
