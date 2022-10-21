@@ -14,11 +14,13 @@ class CliUserInterfaceTest {
 
   @BeforeAll
   public static void setStreams() {
+
     System.setOut(new PrintStream(out));
   }
 
   @AfterAll
   public static void restoreInitialStreams() {
+
     System.setOut(originalOut);
   }
 
@@ -32,13 +34,5 @@ class CliUserInterfaceTest {
 
   @Test
   void waitForUserInput() {
-  }
-
-  @Test
-  void newLine() {
-  }
-
-  @Test
-  void addToCartOrKeepBrowsingMessage() {
   }
 }

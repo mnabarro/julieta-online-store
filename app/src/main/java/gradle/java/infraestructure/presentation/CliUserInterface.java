@@ -19,7 +19,7 @@ public class CliUserInterface implements UserInterface {
 
   @Override
   public String newLine() {
-    return "\n";
+    return System.lineSeparator();
   }
 
   public String addToCartOrKeepBrowsingMessage() {
