@@ -3,6 +3,7 @@
  */
 package gradle.java;
 
+import gradle.java.domain.OnlineShop;
 import gradle.java.domain.ProductRepository;
 import gradle.java.domain.UserInterface;
 import gradle.java.infraestructure.dataaccess.Database;

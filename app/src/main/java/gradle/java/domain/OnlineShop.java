@@ -1,9 +1,5 @@
-package gradle.java;
+package gradle.java.domain;
 
-import gradle.java.domain.Product;
-import gradle.java.domain.ProductRepository;
-import gradle.java.domain.StockRepository;
-import gradle.java.domain.UserInterface;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuOptions;
 import gradle.java.infraestructure.presentation.MenuMessages;
