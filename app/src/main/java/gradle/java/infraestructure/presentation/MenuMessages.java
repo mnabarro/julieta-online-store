@@ -11,5 +11,19 @@ public class MenuMessages {
   public final static String chooseValidOption = "Sorry, you have to choose one valid option";
   public final static String productDoesntExists = "Sorry, the product doesn't exist";
   public static final String pressEnterToContinue = "Press <ENTER> to continue";
+  public static String addToCartOrKeepBrowsingMessage() {
 
+    StringBuilder menuPrompt = new StringBuilder();
+
+    menuPrompt.append(newLine());
+    menuPrompt.append(MenuMessages.whatToDoNext).append(newLine()).append(newLine());
+    menuPrompt.append(MenuMessages.optionNumberOneWithDash).append(MenuMessages.addProductToCart).append(newLine());
+    menuPrompt.append(MenuMessages.optionNumberTwoWithDash).append(MenuMessages.keepBrowsing).append(newLine());
+    menuPrompt.append(newLine());
+    return menuPrompt.toString();
+  }
+
+  public static String newLine() {
+    return System.lineSeparator();
+  }
 }

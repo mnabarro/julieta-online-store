@@ -38,7 +38,7 @@ public class OnlineShop {
 
         ui.sendMessage(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
 
-        String userChoice = ui.waitForUserInput(ui.addToCartOrKeepBrowsingMessage());
+        String userChoice = ui.waitForUserInput(MenuMessages.addToCartOrKeepBrowsingMessage());
 
         if (Objects.equals(userChoice, MenuOptions.addToCart)) {
           System.exit(0);

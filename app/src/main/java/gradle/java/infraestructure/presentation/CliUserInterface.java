@@ -16,21 +16,5 @@ public class CliUserInterface implements UserInterface {
     Scanner userInput = new Scanner(System.in);
     return userInput.nextLine();
   }
-
-  @Override
-  public String newLine() {
-    return System.lineSeparator();
-  }
-
-  public String addToCartOrKeepBrowsingMessage() {
-    StringBuilder menuPrompt = new StringBuilder();
-
-    menuPrompt.append(newLine());
-    menuPrompt.append(MenuMessages.whatToDoNext).append(newLine());
-    menuPrompt.append(MenuMessages.optionNumberOneWithDash).append(MenuMessages.addProductToCart).append(newLine());
-    menuPrompt.append(MenuMessages.optionNumberTwoWithDash).append(MenuMessages.keepBrowsing).append(newLine());
-    menuPrompt.append(newLine());
-    return menuPrompt.toString();
-  }
 }
 
