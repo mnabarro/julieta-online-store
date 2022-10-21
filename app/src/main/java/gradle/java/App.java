@@ -12,17 +12,18 @@ import gradle.java.infraestructure.presentation.ProductFormatter;
 import gradle.java.infraestructure.presentation.cliUserInterface;
 
 public class App {
-    public static void main(String[] args) {
 
-        ProductRepository database = new Database();
-        CatalogFormatter catalogFormatter = new CatalogFormatter();
-        ProductFormatter productFormatter = new ProductFormatter();
-        ProductWarehouse productWarehouse = new ProductWarehouse();
-        UserInterface userInterface = new cliUserInterface();
+  public static void main(String[] args) {
 
-        OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
+    ProductRepository database = new Database();
+    CatalogFormatter catalogFormatter = new CatalogFormatter();
+    ProductFormatter productFormatter = new ProductFormatter();
+    ProductWarehouse productWarehouse = new ProductWarehouse();
+    UserInterface userInterface = new cliUserInterface();
 
-        onlineShop.run();
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
 
-    }
+    onlineShop.run();
+
+  }
 }

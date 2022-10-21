@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Database implements ProductRepository {
+
   private final ArrayList<Product> productList = new ArrayList<>(Arrays.asList(
     new Product(
       "\uD83D\uDCFA",
@@ -24,7 +25,7 @@ public class Database implements ProductRepository {
       "Untuned musical keyboard",
       "4 octaves",
       "Tired of your noisy neighbour? Play this untuned musical keyboard for two hours at home and your " +
-                   "neighbour will be ready to move to a building far away from you.",
+        "neighbour will be ready to move to a building far away from you.",
       1003.00,
       "X4A"))
   );
@@ -33,8 +34,9 @@ public class Database implements ProductRepository {
   public ArrayList<Product> findAll() {
     return productList;
   }
+
   public Optional<Product> findByReference(String reference) {
-    for (Product product: productList) {
+    for (Product product : productList) {
       if (Objects.equals(product.reference, reference)) {
         return Optional.of(product);
       }

@@ -21,7 +21,8 @@ public class cliUserInterface implements UserInterface {
   public String newLine() {
     return "\n";
   }
-  public String addToCartOrKeepBrowsingMessage(){
+
+  public String addToCartOrKeepBrowsingMessage() {
     StringBuilder menuPrompt = new StringBuilder();
 
     menuPrompt.append(newLine());
@@ -30,6 +31,6 @@ public class cliUserInterface implements UserInterface {
     menuPrompt.append(MenuMessages.optionNumberTwoWithDash).append(MenuMessages.keepBrowsing).append(newLine());
     menuPrompt.append(newLine());
     return menuPrompt.toString();
-    }
+  }
 }
 

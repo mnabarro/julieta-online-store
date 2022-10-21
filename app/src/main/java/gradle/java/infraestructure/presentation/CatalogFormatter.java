@@ -4,16 +4,18 @@ import gradle.java.domain.Product;
 import java.util.ArrayList;
 
 public class CatalogFormatter {
-    private final ProductFormatter productFormatter = new ProductFormatter();
-    public String formattedCatalog(ArrayList<Product> catalog){
 
-        StringBuilder result = new StringBuilder();
+  private final ProductFormatter productFormatter = new ProductFormatter();
 
-        for (Product product : catalog){
-            result.append(productFormatter.formattedProduct(product));
-            result.append("\n");
-        }
+  public String formattedCatalog(ArrayList<Product> catalog) {
 
-        return result.toString();
+    StringBuilder result = new StringBuilder();
+
+    for (Product product : catalog) {
+      result.append(productFormatter.formattedProduct(product));
+      result.append("\n");
     }
+
+    return result.toString();
+  }
 }

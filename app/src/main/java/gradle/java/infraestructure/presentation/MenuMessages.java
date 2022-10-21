@@ -1,6 +1,7 @@
 package gradle.java.infraestructure.presentation;
 
 public class MenuMessages {
+
   public final static String whatToDoNext = "¿What would you like to do next?";
   public final static String whichProductToExplore = "Which product would you like to explore?\n- Introduce a product's reference.";
   public final static String addProductToCart = "Add product to cart";
