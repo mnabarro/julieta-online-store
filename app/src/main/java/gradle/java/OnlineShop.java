@@ -70,7 +70,7 @@ public class OnlineShop {
 
   public Optional<Product> findProductToViewDetails() {
 
-    String referenceToLookFor = ui.waitForUserInput(MenuMessages.wichProductToExplore);
+    String referenceToLookFor = ui.waitForUserInput(MenuMessages.whichProductToExplore);
 
     return database.findByReference(referenceToLookFor);
   }

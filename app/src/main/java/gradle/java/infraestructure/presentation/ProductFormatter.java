@@ -11,7 +11,7 @@ public class ProductFormatter {
 
     result.append(product.image).append(newLine);
     result.append(product.description).append(", ");
-    result.append(product.higlightedAttribute).append(newLine);
+    result.append(product.highlighted).append(newLine);
     result.append(priceTitle).append(product.price).append(" €\n");
     result.append(referenceTitle).append(product.reference);
     result.append("\n");
@@ -31,7 +31,7 @@ public class ProductFormatter {
     result.append(unitsLeft.toString()).append(unitsLeftText).append(newLine);
     result.append(summaryHeading).append(newLine);
     result.append(product.description).append(", ");
-    result.append(product.higlightedAttribute).append(newLine).append(newLine);
+    result.append(product.highlighted).append(newLine).append(newLine);
     result.append(descriptionHeading).append(newLine);
     result.append(product.longDescription).append(newLine);
     result.append(newLine);
