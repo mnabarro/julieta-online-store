@@ -2,7 +2,8 @@ package gradle.java;
 
 import gradle.java.domain.Product;
 import gradle.java.domain.ProductRepository;
-import gradle.java.infraestructure.dataaccess.ProductWarehouse;
+import gradle.java.domain.StockRepository;
+import gradle.java.domain.UserInterface;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuOptions;
 import gradle.java.infraestructure.presentation.MenuStrings;
@@ -16,14 +17,16 @@ public class OnlineShop {
   private final ProductRepository database;
   private final CatalogFormatter catalogFormatter;
   private final ProductFormatter productFormatter;
+  private final StockRepository productWarehouse;
+  private final UserInterface userInterface;
 
-  private final ProductWarehouse productWarehouse;
   public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter,
-    ProductWarehouse productWarehouse) {
+    StockRepository productWarehouse, UserInterface userInterface) {
     this.database = database;
     this.catalogFormatter = catalogFormatter;
     this.productFormatter = productFormatter;
     this.productWarehouse = productWarehouse;
+    this.userInterface = userInterface;
   }
 
   public void cliOnlineShop() {
@@ -38,7 +41,7 @@ public class OnlineShop {
       if (productILookFor.isPresent()) {
         Integer itemStock = productWarehouse.getStockByReference(productILookFor.get().reference);
 
-        consoleOut(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
+        userInterface.sendMessage(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
 
         String userChoice = addToCartOrKeepBrowsing();
 
@@ -46,39 +49,29 @@ public class OnlineShop {
           System.exit(0);
 
         } else if (Objects.equals(userChoice, MenuOptions.keepBrowsing)) {
-          consoleOut("Keep browsing");
+          userInterface.sendMessage("Keep browsing");
         } else {
-          consoleOut(MenuStrings.chooseValidOption);
-          waitForUserToPressEnter();
+          userInterface.sendMessage(MenuStrings.chooseValidOption);
+          userInterface.waitForUserInput(MenuStrings.pressEnterToContinue);
         }
 
       } else {
-        consoleOut(MenuStrings.productDoesntExists);
-        waitForUserToPressEnter();
+        userInterface.sendMessage(MenuStrings.productDoesntExists);
+        userInterface.waitForUserInput(MenuStrings.pressEnterToContinue);
       }
     }
-  }
-
-  private void waitForUserToPressEnter() {
-    consoleOut(MenuStrings.pressEnterToContinue);
-    Scanner userInput = new Scanner(System.in);
-    userInput.nextLine();
-  }
-
-  private void consoleOut(String text) {
-    System.out.println(text);
   }
 
   public void showProducts() {
 
     ArrayList<Product> catalog = database.findAll();
     String formattedCatalog = catalogFormatter.formattedCatalog(catalog);
-    consoleOut(formattedCatalog);
+    userInterface.sendMessage(formattedCatalog);
   }
 
   public Optional<Product> selectProductToViewDetails() {
 
-    consoleOut(MenuStrings.wichProduct);
+    userInterface.sendMessage(MenuStrings.wichProduct);
 
     Scanner userInput = new Scanner(System.in);
     String referenceToLookFor = userInput.nextLine();
@@ -94,7 +87,7 @@ public class OnlineShop {
     textMenu.append(MenuStrings.optionNumberOneWithDash).append(MenuStrings.addProductToCart).append("\n");
     textMenu.append(MenuStrings.optionNumberTwoWithDash).append(MenuStrings.keepBrowsing).append("\n");
     textMenu.append("\n");
-    consoleOut(textMenu.toString());
+    userInterface.sendMessage(textMenu.toString());
 
     Scanner userInput = new Scanner(System.in);
     String userSelection = userInput.nextLine();

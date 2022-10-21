@@ -4,10 +4,12 @@
 package gradle.java;
 
 import gradle.java.domain.ProductRepository;
+import gradle.java.domain.UserInterface;
 import gradle.java.infraestructure.dataaccess.Database;
 import gradle.java.infraestructure.dataaccess.ProductWarehouse;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.ProductFormatter;
+import gradle.java.infraestructure.presentation.cliUserInterface;
 
 public class App {
     public static void main(String[] args) {
@@ -16,8 +18,9 @@ public class App {
         CatalogFormatter catalogFormatter = new CatalogFormatter();
         ProductFormatter productFormatter = new ProductFormatter();
         ProductWarehouse productWarehouse = new ProductWarehouse();
+        UserInterface userInterface = new cliUserInterface();
 
-        OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse);
+        OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
 
         onlineShop.cliOnlineShop();
 
