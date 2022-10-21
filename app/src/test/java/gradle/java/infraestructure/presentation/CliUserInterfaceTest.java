@@ -25,14 +25,10 @@ class CliUserInterfaceTest {
   }
 
   @Test
-  void sendMessage() {
+  void sendMessageTest() {
     String expectedMessage = "Message to send";
     CliUserInterface cliUserInterface = new CliUserInterface();
     cliUserInterface.sendMessage(expectedMessage);
     assertEquals(out.toString().trim(),expectedMessage);
-  }
-
-  @Test
-  void waitForUserInput() {
   }
 }
