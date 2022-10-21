@@ -29,7 +29,7 @@ public class OnlineShop {
     this.ui = userInterface;
   }
 
-  public void cliOnlineShop() {
+  public void run() {
     Optional<Product> productILookFor;
 
     while (true) {

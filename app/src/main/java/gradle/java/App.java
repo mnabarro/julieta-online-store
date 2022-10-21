@@ -22,7 +22,7 @@ public class App {
 
         OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
 
-        onlineShop.cliOnlineShop();
+        onlineShop.run();
 
     }
 }
