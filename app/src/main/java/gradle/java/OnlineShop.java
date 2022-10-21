@@ -8,7 +8,6 @@ import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.MenuOptions;
 import gradle.java.infraestructure.presentation.MenuMessages;
 import gradle.java.infraestructure.presentation.ProductFormatter;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -30,15 +29,15 @@ public class OnlineShop {
   }
 
   public void run() {
-    Optional<Product> productILookFor;
 
     while (true) {
 
       showProducts();
 
-      productILookFor = selectProductToViewDetails();
+      Optional<Product> productILookFor = findProductToViewDetails();
 
       if (productILookFor.isPresent()) {
+
         Integer itemStock = productWarehouse.getStockByReference(productILookFor.get().reference);
 
         ui.sendMessage(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
@@ -64,15 +63,14 @@ public class OnlineShop {
 
   public void showProducts() {
 
-    ArrayList<Product> catalog = database.findAll();
-    String formattedCatalog = catalogFormatter.formattedCatalog(catalog);
+    String formattedCatalog = catalogFormatter.formattedCatalog(database.findAll());
 
     ui.sendMessage(formattedCatalog);
   }
 
-  public Optional<Product> selectProductToViewDetails() {
+  public Optional<Product> findProductToViewDetails() {
 
-    String referenceToLookFor = ui.waitForUserInput(MenuMessages.wichProduct);
+    String referenceToLookFor = ui.waitForUserInput(MenuMessages.wichProductToExplore);
 
     return database.findByReference(referenceToLookFor);
   }
