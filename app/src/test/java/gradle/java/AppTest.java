@@ -5,11 +5,12 @@ package gradle.java;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertThat(1).isEqualTo(1);
+    @Test
+    public void appTest() {
+        assertEquals(1, 1);
     }
 }

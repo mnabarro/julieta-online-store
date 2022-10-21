@@ -10,7 +10,7 @@ import gradle.java.infraestructure.dataaccess.Database;
 import gradle.java.infraestructure.dataaccess.ProductWarehouse;
 import gradle.java.infraestructure.presentation.CatalogFormatter;
 import gradle.java.infraestructure.presentation.ProductFormatter;
-import gradle.java.infraestructure.presentation.cliUserInterface;
+import gradle.java.infraestructure.presentation.CliUserInterface;
 
 public class App {
 
@@ -20,7 +20,7 @@ public class App {
     CatalogFormatter catalogFormatter = new CatalogFormatter();
     ProductFormatter productFormatter = new ProductFormatter();
     ProductWarehouse productWarehouse = new ProductWarehouse();
-    UserInterface userInterface = new cliUserInterface();
+    UserInterface userInterface = new CliUserInterface();
 
     OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
 
