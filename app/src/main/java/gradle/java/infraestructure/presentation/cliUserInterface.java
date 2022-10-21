@@ -22,14 +22,14 @@ public class cliUserInterface implements UserInterface {
     return "\n";
   }
   public String addToCartOrKeepBrowsingMessage(){
-    StringBuilder textMenu = new StringBuilder();
+    StringBuilder menuPrompt = new StringBuilder();
 
-    textMenu.append(newLine());
-    textMenu.append(MenuMessages.whatToDoNext).append(newLine());
-    textMenu.append(MenuMessages.optionNumberOneWithDash).append(MenuMessages.addProductToCart).append(newLine());
-    textMenu.append(MenuMessages.optionNumberTwoWithDash).append(MenuMessages.keepBrowsing).append(newLine());
-    textMenu.append(newLine());
-    return textMenu.toString();
+    menuPrompt.append(newLine());
+    menuPrompt.append(MenuMessages.whatToDoNext).append(newLine());
+    menuPrompt.append(MenuMessages.optionNumberOneWithDash).append(MenuMessages.addProductToCart).append(newLine());
+    menuPrompt.append(MenuMessages.optionNumberTwoWithDash).append(MenuMessages.keepBrowsing).append(newLine());
+    menuPrompt.append(newLine());
+    return menuPrompt.toString();
     }
 }
 
