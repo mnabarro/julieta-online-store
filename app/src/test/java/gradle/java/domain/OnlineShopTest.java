@@ -17,10 +17,10 @@ import resources.TestDatabase;
 class OnlineShopTest {
 
   private AutoCloseable closeable;
-  TestDatabase database;
-  CatalogFormatter catalogFormatter;
-  ProductFormatter productFormatter;
-  StockRepository stockRepository;
+  private TestDatabase database;
+  private CatalogFormatter catalogFormatter;
+  private ProductFormatter productFormatter;
+  private StockRepository stockRepository;
   UserInterface userInterface;
 
   @BeforeEach
