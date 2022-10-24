@@ -1,7 +1,6 @@
 package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.UserInterface;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class CliUserInterface implements UserInterface {
@@ -12,14 +11,8 @@ public class CliUserInterface implements UserInterface {
   }
 
   @Override
-  public String waitForUserInput(String message,Optional<Object> hardwareLayer) {
-    Scanner userInput;
-    sendMessage(message);
-    if (hardwareLayer.isEmpty()) {
-      userInput = new Scanner(System.in);
-    } else {
-      userInput = ((Scanner) hardwareLayer.get());
-    }
+  public String getConsoleInput() {
+    Scanner userInput = new Scanner(System.in);
     return userInput.nextLine();
   }
 }

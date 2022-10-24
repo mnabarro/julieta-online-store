@@ -38,7 +38,7 @@ public class OnlineShop {
 
         ui.sendMessage(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
 
-        String userChoice = ui.waitForUserInput(MenuMessages.addToCartOrKeepBrowsingMessage(), Optional.empty());
+        String userChoice = waitForUserInput(MenuMessages.addToCartOrKeepBrowsingMessage());
 
         if (Objects.equals(userChoice, MenuOptions.addToCart)) {
           System.exit(0);
@@ -47,12 +47,12 @@ public class OnlineShop {
           ui.sendMessage("Keep browsing");
         } else {
           ui.sendMessage(MenuMessages.chooseValidOption);
-          ui.waitForUserInput(MenuMessages.pressEnterToContinue, Optional.empty());
+          waitForUserInput(MenuMessages.pressEnterToContinue);
         }
 
       } else {
         ui.sendMessage(MenuMessages.productDoesntExists);
-        ui.waitForUserInput(MenuMessages.pressEnterToContinue, Optional.empty());
+        waitForUserInput(MenuMessages.pressEnterToContinue);
       }
     }
   }
@@ -66,8 +66,13 @@ public class OnlineShop {
 
   public Optional<Product> findProductToViewDetails() {
 
-    String referenceToLookFor = ui.waitForUserInput(MenuMessages.whichProductToExplore, Optional.empty());
+    String referenceToLookFor = waitForUserInput(MenuMessages.whichProductToExplore);
 
     return database.findByReference(referenceToLookFor);
+  }
+
+  public String waitForUserInput(String message) {
+    ui.sendMessage(message);
+    return ui.getConsoleInput();
   }
 }
