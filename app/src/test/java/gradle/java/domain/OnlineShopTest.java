@@ -63,7 +63,7 @@ class OnlineShopTest {
     Optional<Product> expectedProduct = database.findByReference(productReference);
     OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
 
-    when(userInterface.waitForUserInput(MenuMessages.whichProductToExplore)).thenReturn(productReference);
+    when(userInterface.waitForUserInput(MenuMessages.whichProductToExplore,Optional.empty())).thenReturn(productReference);
 
     assertThat(onlineShop.findProductToViewDetails()).usingRecursiveComparison().isEqualTo(expectedProduct);
   }
@@ -75,7 +75,7 @@ class OnlineShopTest {
 
     OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
 
-    when(userInterface.waitForUserInput(MenuMessages.whichProductToExplore)).thenReturn(nonExistingProductReference);
+    when(userInterface.waitForUserInput(MenuMessages.whichProductToExplore,Optional.empty())).thenReturn(nonExistingProductReference);
 
     assertThat(onlineShop.findProductToViewDetails()).isEqualTo(Optional.empty());
   }
