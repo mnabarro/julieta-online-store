@@ -46,7 +46,7 @@ class OnlineShopTest {
   @Test
   void waitForUserInputTest() {
     String response;
-    String expectedResponse= "ABC";
+    String expectedResponse = "ABC";
     String messageToUser = "Please select an option:";
     OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
     when(userInterface.getConsoleInput()).thenReturn(expectedResponse);
@@ -55,8 +55,10 @@ class OnlineShopTest {
 
     assertThat(response).isEqualTo(expectedResponse);
   }
+
   @Captor
   ArgumentCaptor<String> textOutCaptor;
+
   @Test
   void showProductsTest() {
     String formattedCatalog = catalogFormatter.formattedCatalog(database.findAll());

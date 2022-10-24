@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 
 class CliUserInterfaceTest {
+
   private static final ByteArrayOutputStream out = new ByteArrayOutputStream();
   private static final PrintStream originalOut = System.out;
   private AutoCloseable closeable;
@@ -26,6 +27,7 @@ class CliUserInterfaceTest {
   void atLast() throws Exception {
     closeable.close();
   }
+
   @BeforeAll
   public static void setStreams() {
 
@@ -43,6 +45,6 @@ class CliUserInterfaceTest {
     String expectedMessage = "Message to send";
     CliUserInterface cliUserInterface = new CliUserInterface();
     cliUserInterface.sendMessage(expectedMessage);
-    assertEquals(out.toString().trim(),expectedMessage);
+    assertEquals(out.toString().trim(), expectedMessage);
   }
 }

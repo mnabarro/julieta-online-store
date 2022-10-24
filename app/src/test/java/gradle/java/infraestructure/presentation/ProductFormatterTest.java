@@ -13,6 +13,7 @@ class ProductFormatterTest {
   private final TestDatabase testDb = new TestDatabase();
 
   private final ArrayList<Product> productList = testDb.findAll();
+
   @Test
   void formattedProductTest() {
     ProductFormatter productFormatter = new ProductFormatter();
