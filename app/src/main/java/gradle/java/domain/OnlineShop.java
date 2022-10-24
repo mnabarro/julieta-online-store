@@ -73,6 +73,6 @@ public class OnlineShop {
 
   public String waitForUserInput(String message) {
     ui.sendMessage(message);
-    return ui.getConsoleInput();
+    return ui.getUserInput();
   }
 }

@@ -11,7 +11,7 @@ public class CliUserInterface implements UserInterface {
   }
 
   @Override
-  public String getConsoleInput() {
+  public String getUserInput() {
     Scanner userInput = new Scanner(System.in);
     return userInput.nextLine();
   }

@@ -49,7 +49,7 @@ class OnlineShopTest {
     String expectedResponse = "ABC";
     String messageToUser = "Please select an option:";
     OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
-    when(userInterface.getConsoleInput()).thenReturn(expectedResponse);
+    when(userInterface.getUserInput()).thenReturn(expectedResponse);
 
     response = onlineShop.waitForUserInput(messageToUser);
 
