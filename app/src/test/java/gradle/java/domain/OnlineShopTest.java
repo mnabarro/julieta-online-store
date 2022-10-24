@@ -1,6 +1,7 @@
 package gradle.java.domain;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import gradle.java.infraestructure.presentation.CatalogFormatter;
@@ -10,6 +11,8 @@ import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import resources.TestDatabase;
@@ -28,7 +31,7 @@ class OnlineShopTest {
 
     closeable = MockitoAnnotations.openMocks(this);
     database = new TestDatabase();
-    catalogFormatter = Mockito.mock(CatalogFormatter.class);
+    catalogFormatter = new CatalogFormatter();
     productFormatter = Mockito.mock(ProductFormatter.class);
     stockRepository = Mockito.mock(StockRepository.class);
     userInterface = Mockito.mock(UserInterface.class);
@@ -40,8 +43,17 @@ class OnlineShopTest {
     closeable.close();
   }
 
+  @Captor
+  ArgumentCaptor<String> textOutCaptor;
   @Test
   void showProductsTest() {
+    String formattedCatalog = catalogFormatter.formattedCatalog(database.findAll());
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
+
+    onlineShop.showProducts();
+    verify(userInterface).sendMessage(textOutCaptor.capture());
+
+    assertThat(formattedCatalog).isEqualTo(textOutCaptor.getValue());
   }
 
   @Test
