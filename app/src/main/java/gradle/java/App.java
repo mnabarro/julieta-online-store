@@ -4,23 +4,21 @@
 package gradle.java;
 
 import gradle.java.domain.OnlineShop;
-import gradle.java.domain.ports.CatalogFormatter;
-import gradle.java.domain.ports.ProductFormatter;
 import gradle.java.domain.ports.ProductRepository;
 import gradle.java.domain.ports.UserInterface;
 import gradle.java.infraestructure.dataaccess.Database;
 import gradle.java.infraestructure.dataaccess.ProductWarehouse;
-import gradle.java.infraestructure.presentation.CliCatalogFormatter;
-import gradle.java.infraestructure.presentation.CliProductFormatter;
-import gradle.java.infraestructure.presentation.CliUserInterface;
+import gradle.java.infraestructure.presentation.CatalogFormatter;
+import gradle.java.infraestructure.presentation.ProductFormatter;
+import gradle.java.infraestructure.presentation.cli.CliUserInterface;
 
 public class App {
 
   public static void main(String[] args) {
 
     ProductRepository database = new Database();
-    CatalogFormatter catalogFormatter = new CliCatalogFormatter();
-    ProductFormatter productFormatter = new CliProductFormatter();
+    gradle.java.domain.ports.CatalogFormatter catalogFormatter = new CatalogFormatter();
+    gradle.java.domain.ports.ProductFormatter productFormatter = new ProductFormatter();
     ProductWarehouse productWarehouse = new ProductWarehouse();
     UserInterface userInterface = new CliUserInterface();
 

@@ -1,4 +1,4 @@
-package gradle.java.infraestructure.presentation;
+package gradle.java.infraestructure.presentation.cli;
 
 import gradle.java.domain.ports.UserInterface;
 import java.util.Scanner;

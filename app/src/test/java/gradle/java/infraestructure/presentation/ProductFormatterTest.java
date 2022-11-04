@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import resources.TestDatabase;
 import resources.TestStrings;
 
-class CliProductFormatterTest {
+class ProductFormatterTest {
 
   private final TestDatabase testDb = new TestDatabase();
 
@@ -16,15 +16,15 @@ class CliProductFormatterTest {
 
   @Test
   void formattedProductTest() {
-    CliProductFormatter cliProductFormatter = new CliProductFormatter();
-    String formattedProduct = cliProductFormatter.formattedProduct(productList.get(1));
+    ProductFormatter productFormatter = new ProductFormatter();
+    String formattedProduct = productFormatter.formattedProduct(productList.get(1));
     assertEquals(formattedProduct, TestStrings.expectedFormattedProduct);
   }
 
   @Test
   void formattedProductDetailTest() {
-    CliProductFormatter cliProductFormatter = new CliProductFormatter();
-    String formattedProductDetail = cliProductFormatter.formattedProductDetail(productList.get(0), 12);
+    ProductFormatter productFormatter = new ProductFormatter();
+    String formattedProductDetail = productFormatter.formattedProductDetail(productList.get(0), 12);
     assertEquals(formattedProductDetail, TestStrings.expectedFormattedProductDetail);
   }
 }

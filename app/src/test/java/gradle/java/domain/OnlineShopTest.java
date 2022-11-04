@@ -6,8 +6,8 @@ import static org.mockito.Mockito.when;
 
 import gradle.java.domain.ports.StockRepository;
 import gradle.java.domain.ports.UserInterface;
-import gradle.java.infraestructure.presentation.CliCatalogFormatter;
-import gradle.java.infraestructure.presentation.CliProductFormatter;
+import gradle.java.infraestructure.presentation.CatalogFormatter;
+import gradle.java.infraestructure.presentation.ProductFormatter;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,8 +22,8 @@ class OnlineShopTest {
 
   private AutoCloseable closeable;
   private TestDatabase database;
-  private CliCatalogFormatter cliCatalogFormatter;
-  private CliProductFormatter cliProductFormatter;
+  private CatalogFormatter catalogFormatter;
+  private ProductFormatter productFormatter;
   private StockRepository stockRepository;
   UserInterface userInterface;
 
@@ -32,8 +32,8 @@ class OnlineShopTest {
 
     closeable = MockitoAnnotations.openMocks(this);
     database = new TestDatabase();
-    cliCatalogFormatter = new CliCatalogFormatter();
-    cliProductFormatter = Mockito.mock(CliProductFormatter.class);
+    catalogFormatter = new CatalogFormatter();
+    productFormatter = Mockito.mock(ProductFormatter.class);
     stockRepository = Mockito.mock(StockRepository.class);
     userInterface = Mockito.mock(UserInterface.class);
 
@@ -49,7 +49,7 @@ class OnlineShopTest {
     String response;
     String expectedResponse = "ABC";
     String messageToUser = "Please select an option:";
-    OnlineShop onlineShop = new OnlineShop(database, cliCatalogFormatter, cliProductFormatter, stockRepository, userInterface);
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
     when(userInterface.getUserInput()).thenReturn(expectedResponse);
 
     response = onlineShop.waitForUserInput(messageToUser);
@@ -62,8 +62,8 @@ class OnlineShopTest {
 
   @Test
   void showProductsTest() {
-    String formattedCatalog = cliCatalogFormatter.formattedCatalog(database.findAll());
-    OnlineShop onlineShop = new OnlineShop(database, cliCatalogFormatter, cliProductFormatter, stockRepository, userInterface);
+    String formattedCatalog = catalogFormatter.formattedCatalog(database.findAll());
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
 
     onlineShop.showProducts();
     verify(userInterface).sendMessage(textOutCaptor.capture());
@@ -76,7 +76,7 @@ class OnlineShopTest {
     String productReference = "W2C";
 
     Optional<Product> expectedProduct = database.findByReference(productReference);
-    OnlineShop onlineShop = new OnlineShop(database, cliCatalogFormatter, cliProductFormatter, stockRepository, userInterface);
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
 
     when(onlineShop.waitForUserInput(MenuMessages.whichProductToExplore)).thenReturn(productReference);
 
@@ -88,7 +88,7 @@ class OnlineShopTest {
 
     String nonExistingProductReference = "W5K";
 
-    OnlineShop onlineShop = new OnlineShop(database, cliCatalogFormatter, cliProductFormatter, stockRepository, userInterface);
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, stockRepository, userInterface);
 
     when(onlineShop.waitForUserInput(MenuMessages.whichProductToExplore)).thenReturn(nonExistingProductReference);
 
