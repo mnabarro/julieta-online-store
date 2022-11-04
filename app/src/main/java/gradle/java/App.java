@@ -4,8 +4,10 @@
 package gradle.java;
 
 import gradle.java.domain.OnlineShop;
-import gradle.java.domain.ProductRepository;
-import gradle.java.domain.UserInterface;
+import gradle.java.domain.ports.CatalogFormatter;
+import gradle.java.domain.ports.ProductFormatter;
+import gradle.java.domain.ports.ProductRepository;
+import gradle.java.domain.ports.UserInterface;
 import gradle.java.infraestructure.dataaccess.Database;
 import gradle.java.infraestructure.dataaccess.ProductWarehouse;
 import gradle.java.infraestructure.presentation.CliCatalogFormatter;
@@ -17,12 +19,12 @@ public class App {
   public static void main(String[] args) {
 
     ProductRepository database = new Database();
-    CliCatalogFormatter cliCatalogFormatter = new CliCatalogFormatter();
-    CliProductFormatter cliProductFormatter = new CliProductFormatter();
+    CatalogFormatter catalogFormatter = new CliCatalogFormatter();
+    ProductFormatter productFormatter = new CliProductFormatter();
     ProductWarehouse productWarehouse = new ProductWarehouse();
     UserInterface userInterface = new CliUserInterface();
 
-    OnlineShop onlineShop = new OnlineShop(database, cliCatalogFormatter, cliProductFormatter, productWarehouse, userInterface);
+    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
 
     onlineShop.run();
 

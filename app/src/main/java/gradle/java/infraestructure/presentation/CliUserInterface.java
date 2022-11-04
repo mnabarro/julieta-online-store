@@ -1,6 +1,6 @@
 package gradle.java.infraestructure.presentation;
 
-import gradle.java.domain.UserInterface;
+import gradle.java.domain.ports.UserInterface;
 import java.util.Scanner;
 
 public class CliUserInterface implements UserInterface {

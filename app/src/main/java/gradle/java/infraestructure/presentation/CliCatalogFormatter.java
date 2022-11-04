@@ -1,9 +1,10 @@
 package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
+import gradle.java.domain.ports.CatalogFormatter;
 import java.util.ArrayList;
 
-public class CliCatalogFormatter implements gradle.java.domain.CatalogFormatter {
+public class CliCatalogFormatter implements CatalogFormatter {
 
   private final CliProductFormatter cliProductFormatter = new CliProductFormatter();
 

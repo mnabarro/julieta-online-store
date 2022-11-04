@@ -4,6 +4,8 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import gradle.java.domain.ports.StockRepository;
+import gradle.java.domain.ports.UserInterface;
 import gradle.java.infraestructure.presentation.CliCatalogFormatter;
 import gradle.java.infraestructure.presentation.CliProductFormatter;
 import java.util.Optional;

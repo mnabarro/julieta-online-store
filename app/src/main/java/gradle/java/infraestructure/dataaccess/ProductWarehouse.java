@@ -2,7 +2,7 @@ package gradle.java.infraestructure.dataaccess;
 
 import static java.util.Map.entry;
 
-import gradle.java.domain.StockRepository;
+import gradle.java.domain.ports.StockRepository;
 import java.util.Map;
 
 public class ProductWarehouse implements StockRepository {

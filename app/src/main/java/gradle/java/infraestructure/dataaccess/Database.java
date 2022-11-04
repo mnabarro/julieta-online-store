@@ -1,7 +1,7 @@
 package gradle.java.infraestructure.dataaccess;
 
 import gradle.java.domain.Product;
-import gradle.java.domain.ProductRepository;
+import gradle.java.domain.ports.ProductRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;

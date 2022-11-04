@@ -1,4 +1,4 @@
-package gradle.java.domain;
+package gradle.java.domain.ports;
 
 public interface UserInterface {
 

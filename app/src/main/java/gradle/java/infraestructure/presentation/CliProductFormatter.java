@@ -1,8 +1,9 @@
 package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
+import gradle.java.domain.ports.ProductFormatter;
 
-public class CliProductFormatter implements gradle.java.domain.ProductFormatter {
+public class CliProductFormatter implements ProductFormatter {
 
   private final String referenceTitle = "Reference: ";
   private final String priceTitle = "Price: ";

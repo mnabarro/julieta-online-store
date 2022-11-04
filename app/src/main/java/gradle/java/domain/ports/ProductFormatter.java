@@ -1,4 +1,6 @@
-package gradle.java.domain;
+package gradle.java.domain.ports;
+
+import gradle.java.domain.Product;
 
 public interface ProductFormatter {
 

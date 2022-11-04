@@ -1,5 +1,10 @@
 package gradle.java.domain;
 
+import gradle.java.domain.ports.CatalogFormatter;
+import gradle.java.domain.ports.ProductFormatter;
+import gradle.java.domain.ports.ProductRepository;
+import gradle.java.domain.ports.StockRepository;
+import gradle.java.domain.ports.UserInterface;
 import java.util.Objects;
 import java.util.Optional;
 
