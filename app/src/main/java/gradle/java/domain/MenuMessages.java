@@ -1,4 +1,4 @@
-package gradle.java.infraestructure.presentation;
+package gradle.java.domain;
 
 public class MenuMessages {
 

@@ -5,7 +5,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import gradle.java.infraestructure.presentation.CatalogFormatter;
-import gradle.java.infraestructure.presentation.MenuMessages;
 import gradle.java.infraestructure.presentation.ProductFormatter;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;

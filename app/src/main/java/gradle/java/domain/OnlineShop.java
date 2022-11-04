@@ -1,8 +1,6 @@
 package gradle.java.domain;
 
 import gradle.java.infraestructure.presentation.CatalogFormatter;
-import gradle.java.infraestructure.presentation.MenuOptions;
-import gradle.java.infraestructure.presentation.MenuMessages;
 import gradle.java.infraestructure.presentation.ProductFormatter;
 import java.util.Objects;
 import java.util.Optional;
