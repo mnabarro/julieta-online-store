@@ -1,23 +1,21 @@
 package gradle.java.domain;
 
-import gradle.java.infraestructure.presentation.CliCatalogFormatter;
-import gradle.java.infraestructure.presentation.CliProductFormatter;
 import java.util.Objects;
 import java.util.Optional;
 
 public class OnlineShop {
 
   private final ProductRepository database;
-  private final CliCatalogFormatter cliCatalogFormatter;
-  private final CliProductFormatter cliProductFormatter;
+  private final CatalogFormatter catalogFormatter;
+  private final ProductFormatter productFormatter;
   private final StockRepository productWarehouse;
   private final UserInterface ui;
 
-  public OnlineShop(ProductRepository database, CliCatalogFormatter cliCatalogFormatter, CliProductFormatter cliProductFormatter,
+  public OnlineShop(ProductRepository database, CatalogFormatter catalogFormatter, ProductFormatter productFormatter,
     StockRepository productWarehouse, UserInterface userInterface) {
     this.database = database;
-    this.cliCatalogFormatter = cliCatalogFormatter;
-    this.cliProductFormatter = cliProductFormatter;
+    this.catalogFormatter = catalogFormatter;
+    this.productFormatter = productFormatter;
     this.productWarehouse = productWarehouse;
     this.ui = userInterface;
   }
@@ -34,7 +32,7 @@ public class OnlineShop {
 
         Integer itemStock = productWarehouse.getStockByReference(productILookFor.get().reference);
 
-        ui.sendMessage(cliProductFormatter.formattedProductDetail(productILookFor.get(), itemStock));
+        ui.sendMessage(productFormatter.formattedProductDetail(productILookFor.get(), itemStock));
 
         String userChoice = waitForUserInput(MenuMessages.addToCartOrKeepBrowsingMessage());
 
@@ -57,7 +55,7 @@ public class OnlineShop {
 
   public void showProducts() {
 
-    String formattedCatalog = cliCatalogFormatter.formattedCatalog(database.findAll());
+    String formattedCatalog = catalogFormatter.formattedCatalog(database.findAll());
 
     ui.sendMessage(formattedCatalog);
   }
