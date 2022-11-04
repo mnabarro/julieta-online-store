@@ -2,12 +2,13 @@ package gradle.java.infraestructure.presentation;
 
 import gradle.java.domain.Product;
 
-public class ProductFormatter {
+public class CliProductFormatter implements gradle.java.domain.ProductFormatter {
 
   private final String referenceTitle = "Reference: ";
   private final String priceTitle = "Price: ";
   private final String newLine = "\n";
 
+  @Override
   public String formattedProduct(Product product) {
 
     StringBuilder result = new StringBuilder();
@@ -22,6 +23,7 @@ public class ProductFormatter {
     return result.toString();
   }
 
+  @Override
   public String formattedProductDetail(Product product, Integer unitsLeft) {
 
     String summaryHeading = "SUMMARY:";

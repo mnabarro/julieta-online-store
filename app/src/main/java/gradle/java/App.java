@@ -8,8 +8,8 @@ import gradle.java.domain.ProductRepository;
 import gradle.java.domain.UserInterface;
 import gradle.java.infraestructure.dataaccess.Database;
 import gradle.java.infraestructure.dataaccess.ProductWarehouse;
-import gradle.java.infraestructure.presentation.CatalogFormatter;
-import gradle.java.infraestructure.presentation.ProductFormatter;
+import gradle.java.infraestructure.presentation.CliCatalogFormatter;
+import gradle.java.infraestructure.presentation.CliProductFormatter;
 import gradle.java.infraestructure.presentation.CliUserInterface;
 
 public class App {
@@ -17,12 +17,12 @@ public class App {
   public static void main(String[] args) {
 
     ProductRepository database = new Database();
-    CatalogFormatter catalogFormatter = new CatalogFormatter();
-    ProductFormatter productFormatter = new ProductFormatter();
+    CliCatalogFormatter cliCatalogFormatter = new CliCatalogFormatter();
+    CliProductFormatter cliProductFormatter = new CliProductFormatter();
     ProductWarehouse productWarehouse = new ProductWarehouse();
     UserInterface userInterface = new CliUserInterface();
 
-    OnlineShop onlineShop = new OnlineShop(database, catalogFormatter, productFormatter, productWarehouse, userInterface);
+    OnlineShop onlineShop = new OnlineShop(database, cliCatalogFormatter, cliProductFormatter, productWarehouse, userInterface);
 
     onlineShop.run();
 

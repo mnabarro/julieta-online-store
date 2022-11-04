@@ -3,16 +3,17 @@ package gradle.java.infraestructure.presentation;
 import gradle.java.domain.Product;
 import java.util.ArrayList;
 
-public class CatalogFormatter {
+public class CliCatalogFormatter implements gradle.java.domain.CatalogFormatter {
 
-  private final ProductFormatter productFormatter = new ProductFormatter();
+  private final CliProductFormatter cliProductFormatter = new CliProductFormatter();
 
+  @Override
   public String formattedCatalog(ArrayList<Product> catalog) {
 
     StringBuilder result = new StringBuilder();
 
     for (Product product : catalog) {
-      result.append(productFormatter.formattedProduct(product));
+      result.append(cliProductFormatter.formattedProduct(product));
       result.append("\n");
     }
 
