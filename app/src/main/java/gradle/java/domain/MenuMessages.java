@@ -11,6 +11,7 @@ public class MenuMessages {
   public final static String chooseValidOption = "Sorry, you have to choose one valid option";
   public final static String productDoesntExists = "Sorry, the product doesn't exist";
   public static final String pressEnterToContinue = "Press <ENTER> to continue";
+
   public static String addToCartOrKeepBrowsingMessage() {
 
     StringBuilder menuPrompt = new StringBuilder();

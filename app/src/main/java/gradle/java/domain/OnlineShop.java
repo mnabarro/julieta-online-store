@@ -58,21 +58,21 @@ public class OnlineShop {
     }
   }
 
-  public void showProducts() {
+  void showProducts() {
 
     String formattedCatalog = catalogFormatter.formattedCatalog(database.findAll());
 
     ui.sendMessage(formattedCatalog);
   }
 
-  public Optional<Product> findProductToViewDetails() {
+  Optional<Product> findProductToViewDetails() {
 
     String referenceToLookFor = waitForUserInput(MenuMessages.whichProductToExplore);
 
     return database.findByReference(referenceToLookFor);
   }
 
-  public String waitForUserInput(String message) {
+  String waitForUserInput(String message) {
     ui.sendMessage(message);
     return ui.getUserInput();
   }
